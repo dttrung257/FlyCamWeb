@@ -3,6 +3,7 @@ package com.trg.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,28 +16,29 @@ import com.trg.model.CartItem;
 import com.trg.service.ICartService;
 import com.trg.service.imp.CartService;
 
-@WebServlet(urlPatterns = { "/add-quantity" })
-public class AddQuantityToCartServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = {"/cart"})
+public class CartController extends HttpServlet {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService;
-
-	public AddQuantityToCartServlet() {
-		cartService = new CartService();
-	}
+	private ICartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(req.getParameter("id"));
 		HttpSession session = req.getSession();
 		Cart.itemList = (List<CartItem>) session.getAttribute("item-list");
 		
-		session.setAttribute("item-list", cartService.addQuantity(Cart.itemList, id));
-		resp.sendRedirect("cart");
+		Cart.itemList = cartService.load(Cart.itemList);
+		req.setAttribute("listCartItem", Cart.itemList);
+		req.setAttribute("numberProduct", cartService.countQuantity(Cart.itemList));
+		req.setAttribute("totalPrice", cartService.totalPrice(Cart.itemList));
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("view/cart.jsp");
+		dispatcher.forward(req, resp);
 	}
+
 }

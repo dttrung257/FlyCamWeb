@@ -65,15 +65,21 @@
             <div class="user_option_box">
               <a href="cart.html" class="account-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <span>
+                <span style="text-transform: none">
                   My Account
                 </span>
               </a>
               <a class="cart-link" href="cart">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span>
+                <span style="text-transform: none">
                   Cart
                 </span>
+              </a>
+              <a style="padding-right:5px; border-right: 1px solid #fff" href="#">
+              	<span style="font-size: 15px; text-transform: none">Sign in</span>
+              </a>
+              <a style="margin-left: 0px" href="#">
+              	<span style="font-size: 15px; text-transform: none">Sign Out</span>
               </a>
             </div>
           </div>

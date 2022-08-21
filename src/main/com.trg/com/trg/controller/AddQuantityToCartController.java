@@ -15,18 +15,14 @@ import com.trg.model.CartItem;
 import com.trg.service.ICartService;
 import com.trg.service.imp.CartService;
 
-@WebServlet("/remove-item")
-public class RemoveCartItemServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/add-quantity" })
+public class AddQuantityToCartController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService;
-
-	public RemoveCartItemServlet() {
-		cartService = new CartService();
-	}
+	private ICartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -35,8 +31,8 @@ public class RemoveCartItemServlet extends HttpServlet {
 		int id = Integer.parseInt(req.getParameter("id"));
 		HttpSession session = req.getSession();
 		Cart.itemList = (List<CartItem>) session.getAttribute("item-list");
-		session.setAttribute("item-list", cartService.remove(Cart.itemList, id));
+		
+		session.setAttribute("item-list", cartService.addQuantity(Cart.itemList, id));
 		resp.sendRedirect("cart");
 	}
-
 }

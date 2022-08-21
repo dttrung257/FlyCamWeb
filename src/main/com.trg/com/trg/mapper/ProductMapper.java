@@ -6,6 +6,17 @@ import java.sql.SQLException;
 import com.trg.model.Product;
 
 public class ProductMapper implements RowMapper<Product> {
+	private static ProductMapper productMapper = null;
+	
+	private ProductMapper() {
+	}
+	
+	public static ProductMapper getInstance() {
+		if (productMapper == null) {
+			productMapper = new ProductMapper();
+		}
+		return productMapper;
+	}
 
 	@Override
 	public Product mapRow(ResultSet rs) {

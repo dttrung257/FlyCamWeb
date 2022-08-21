@@ -8,11 +8,17 @@ import com.trg.model.Product;
 import com.trg.service.IProductService;
 
 public class ProductService implements IProductService {
+	private IProductDao productDao = ProductDao.getInstance();
+	private static ProductService productService = null;
 	
-	private IProductDao productDao;
-
-	public ProductService() {
-		productDao = new ProductDao();
+	private ProductService() {
+	}
+	
+	public static ProductService getInstance() {
+		if (productService == null) {
+			productService = new ProductService();
+		}
+		return productService;
 	}
 
 	@Override

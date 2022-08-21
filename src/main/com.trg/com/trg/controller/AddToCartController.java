@@ -16,16 +16,12 @@ import com.trg.service.ICartService;
 import com.trg.service.imp.CartService;
 
 @WebServlet(urlPatterns = { "/add-to-cart" })
-public class AddToCartServlet extends HttpServlet {
+public class AddToCartController extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService;
-
-	public AddToCartServlet() {
-		cartService = new CartService();
-	}
+	private ICartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override

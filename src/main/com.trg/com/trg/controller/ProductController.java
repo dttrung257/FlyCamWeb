@@ -13,17 +13,13 @@ import com.trg.service.IProductService;
 import com.trg.service.imp.ProductService;
 
 @WebServlet(urlPatterns = { "/product" })
-public class ProductServlet extends HttpServlet {
+public class ProductController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IProductService  productService;
-
-	public ProductServlet() {
-		productService = new ProductService();
-	}
+	private IProductService  productService = ProductService.getInstance();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

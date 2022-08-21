@@ -16,17 +16,13 @@ import com.trg.service.ICartService;
 import com.trg.service.imp.CartService;
 
 @WebServlet("/reduce-quantity")
-public class ReduceQuantityInCartServlet extends HttpServlet {
+public class ReduceQuantityInCartController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService;
-	
-	public ReduceQuantityInCartServlet() {
-		cartService = new CartService();
-	}
+	private ICartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override

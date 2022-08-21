@@ -9,10 +9,17 @@ import com.trg.service.ICartService;
 import com.trg.service.IProductService;
 
 public class CartService implements ICartService {
-	private IProductService productService;
-
-	public CartService() {
-		productService = new ProductService();
+	private IProductService productService = ProductService.getInstance();
+	private static CartService cartService = null;
+	
+	private CartService() {
+	}
+	
+	public static CartService getInstance() {
+		if (cartService == null) {
+			cartService = new CartService();
+		}
+		return cartService;
 	}
 
 	@Override

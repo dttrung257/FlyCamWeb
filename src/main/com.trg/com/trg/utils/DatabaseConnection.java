@@ -5,11 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-	private static final String url = "jdbc:mysql://localhost:3306/demo_web";
-	private static final String user = "root";
-	private static final String password = "1234567";
+	private static DatabaseConnection databaseConnection = null;
 	
-	public static Connection getConnection() {
+	private DatabaseConnection() {
+	}
+	
+	public static DatabaseConnection getInstance() {
+		if (databaseConnection == null) {
+			databaseConnection = new DatabaseConnection();
+		}
+		return databaseConnection;
+	}
+	
+	public Connection getConnection() {
+		final String url = "jdbc:mysql://localhost:3306/demo_web";
+		final String user = "root";
+		final String password = "1234567";
+		
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

@@ -12,6 +12,7 @@ import com.trg.mapper.RowMapper;
 import com.trg.utils.DatabaseConnection;
 
 public class Dao<T> implements IDao<T> {
+	private DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
 
 	@Override
 	public List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
@@ -20,7 +21,7 @@ public class Dao<T> implements IDao<T> {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = databaseConnection.getConnection();
 			ps = connection.prepareStatement(sql);
 			setParameters(ps, parameters);
 			rs = ps.executeQuery();
