@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.trg.service.IProductService;
+import com.trg.service.ItfProductService;
 import com.trg.service.imp.ProductService;
 
 @WebServlet(urlPatterns = { "/product" })
@@ -19,13 +19,13 @@ public class ProductController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IProductService  productService = ProductService.getInstance();
+	private ItfProductService  productService = ProductService.getInstance();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.setAttribute("listProduct", productService.findAll());
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("product.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -34,7 +34,7 @@ public class ProductController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String input = req.getParameter("input");
 		req.setAttribute("listProduct", productService.findByProductName(input));
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("product.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

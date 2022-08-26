@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.trg.model.Cart;
 import com.trg.model.CartItem;
-import com.trg.service.ICartService;
+import com.trg.service.ItfCartService;
 import com.trg.service.imp.CartService;
 
 @WebServlet(urlPatterns = { "/add-quantity" })
@@ -22,17 +22,17 @@ public class AddQuantityToCartController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService = CartService.getInstance();
+	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(req.getParameter("id"));
 		HttpSession session = req.getSession();
-		Cart.itemList = (List<CartItem>) session.getAttribute("item-list");
+		Cart.itemList = (List<CartItem>) session.getAttribute("itemList");
+		int id = Integer.parseInt(req.getParameter("id"));
+		session.setAttribute("itemList", cartService.addQuantity(Cart.itemList, id));
 		
-		session.setAttribute("item-list", cartService.addQuantity(Cart.itemList, id));
 		resp.sendRedirect("cart");
 	}
 }

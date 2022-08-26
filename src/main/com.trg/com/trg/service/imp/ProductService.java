@@ -2,23 +2,20 @@ package com.trg.service.imp;
 
 import java.util.List;
 
-import com.trg.dao.IProductDao;
+import com.trg.dao.ItfProductDao;
 import com.trg.dao.imp.ProductDao;
 import com.trg.model.Product;
-import com.trg.service.IProductService;
+import com.trg.service.ItfProductService;
 
-public class ProductService implements IProductService {
-	private IProductDao productDao = ProductDao.getInstance();
+public class ProductService implements ItfProductService {
+	private ItfProductDao productDao = ProductDao.getInstance();
 	private static ProductService productService = null;
 	
 	private ProductService() {
 	}
 	
 	public static ProductService getInstance() {
-		if (productService == null) {
-			productService = new ProductService();
-		}
-		return productService;
+		return productService == null ? new ProductService() : productService;
 	}
 
 	@Override

@@ -2,12 +2,11 @@ package com.trg.dao.imp;
 
 import java.util.List;
 
-import com.trg.dao.IProductDao;
+import com.trg.dao.ItfProductDao;
 import com.trg.mapper.ProductMapper;
-import com.trg.mapper.RowMapper;
 import com.trg.model.Product;
 
-public class ProductDao extends Dao<Product> implements IProductDao {
+public class ProductDao extends Dao<Product> implements ItfProductDao {
 	private ProductMapper productMapper = ProductMapper.getInstance();
 	private static ProductDao productDao = null;
 	
@@ -15,10 +14,7 @@ public class ProductDao extends Dao<Product> implements IProductDao {
 	}
 	
 	public static ProductDao getInstance() {
-		if (productDao == null) {
-			productDao = new ProductDao();
-		}
-		return productDao;
+		return (productDao == null) ? new ProductDao() : productDao;
 	}
 
 	@Override
@@ -39,7 +35,10 @@ public class ProductDao extends Dao<Product> implements IProductDao {
 	public Product findByProductId(int id) {
 		String sql = "select * from products where id = ?";
 		List<Product> result = query(sql, productMapper, id);
-		return result.isEmpty() ? null : result.get(0);
+		if (result == null || result.isEmpty()) {
+			return null;
+		}
+		return result.get(0);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.trg.model.Cart;
 import com.trg.model.CartItem;
-import com.trg.service.ICartService;
+import com.trg.service.ItfCartService;
 import com.trg.service.imp.CartService;
 
 @WebServlet("/reduce-quantity")
@@ -22,7 +22,7 @@ public class ReduceQuantityInCartController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ICartService cartService = CartService.getInstance();
+	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -30,9 +30,9 @@ public class ReduceQuantityInCartController extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(req.getParameter("id"));
 		HttpSession session = req.getSession();
-		Cart.itemList = (List<CartItem>) session.getAttribute("item-list");
-
-		session.setAttribute("item-list", cartService.reduceQuantity(Cart.itemList, id));
+		Cart.itemList = (List<CartItem>) session.getAttribute("itemList");
+		session.setAttribute("itemList", cartService.reduceQuantity(Cart.itemList, id));
+		
 		resp.sendRedirect("cart");
 	}
 }

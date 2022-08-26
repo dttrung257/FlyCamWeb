@@ -5,21 +5,18 @@ import java.util.List;
 
 import com.trg.model.CartItem;
 import com.trg.model.Product;
-import com.trg.service.ICartService;
-import com.trg.service.IProductService;
+import com.trg.service.ItfCartService;
+import com.trg.service.ItfProductService;
 
-public class CartService implements ICartService {
-	private IProductService productService = ProductService.getInstance();
+public class CartService implements ItfCartService {
+	private ItfProductService productService = ProductService.getInstance();
 	private static CartService cartService = null;
 	
 	private CartService() {
 	}
 	
 	public static CartService getInstance() {
-		if (cartService == null) {
-			cartService = new CartService();
-		}
-		return cartService;
+		return cartService == null ? new CartService() : cartService;
 	}
 
 	@Override

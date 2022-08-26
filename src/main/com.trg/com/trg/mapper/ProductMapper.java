@@ -12,10 +12,7 @@ public class ProductMapper implements RowMapper<Product> {
 	}
 	
 	public static ProductMapper getInstance() {
-		if (productMapper == null) {
-			productMapper = new ProductMapper();
-		}
-		return productMapper;
+		return (productMapper == null) ? new ProductMapper() : productMapper;
 	}
 
 	@Override

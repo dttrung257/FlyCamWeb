@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trg.dao.IDao;
+import com.trg.dao.ItfDao;
 import com.trg.mapper.RowMapper;
-import com.trg.utils.DatabaseConnection;
+import com.trg.utils.DatabaseUtil;
 
-public class Dao<T> implements IDao<T> {
-	private DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
-
+public class Dao<T> implements ItfDao<T> {
+	private DatabaseUtil databaseConnection = DatabaseUtil.getInstance();
+	
 	@Override
 	public List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
 		List<T> result = new ArrayList<>();
@@ -25,14 +25,14 @@ public class Dao<T> implements IDao<T> {
 			ps = connection.prepareStatement(sql);
 			setParameters(ps, parameters);
 			rs = ps.executeQuery();
-			//set parameters for PreparedStatement.
-			
+			// set parameters for PreparedStatement.
+
 			while (rs.next()) {
 				result.add(rowMapper.mapRow(rs));
 			}
+			return result;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				if (connection != null) {
@@ -50,8 +50,41 @@ public class Dao<T> implements IDao<T> {
 				e.printStackTrace();
 			}
 		}
+	}
 
-		return result;
+	@Override
+	public boolean query(String sql, Object... parameters) {
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			connection = databaseConnection.getConnection();
+			ps = connection.prepareStatement(sql);
+			setParameters(ps, parameters);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+
+				if (ps != null) {
+					ps.close();
+				}
+
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void setParameters(PreparedStatement ps, Object... parameters) throws SQLException {
@@ -65,6 +98,4 @@ public class Dao<T> implements IDao<T> {
 			}
 		}
 	}
-
-
 }
