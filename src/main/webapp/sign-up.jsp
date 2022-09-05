@@ -23,20 +23,21 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
           	<a href="home" style="text-decoration: none; color: #434f78;">
-               &leftarrow; <span>Back to home</span>
+               <i class="fa-solid fa-arrow-left"></i>
+               <span>Back to home</span>
             </a>
             <h5 class="card-title text-center mb-5 fw-bold fs-5">Sign Up</h5>
             <form action="sign-up" method="post">
             	<div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="fullName" placeholder="name@example.com">
+                <input type="text" class="form-control" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" oninvalid="setCustomValidity('This name is not valid')" required name="fullName" placeholder="name@example.com">
                 <label for="floatingInput">Full Name</label>
               	</div>
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                <input type="email" class="form-control" required name="email" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                <input type="password" class="form-control" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" oninvalid="setCustomValidity('Minimum eight characters, at least one letter, one number and one special character')" required name="password" placeholder="Password">
                 <label for="floatingPassword">Password</label>
               </div>
               <div class="d-grid">

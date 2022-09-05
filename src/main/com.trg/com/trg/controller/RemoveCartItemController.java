@@ -17,11 +17,11 @@ import com.trg.service.imp.CartService;
 
 @WebServlet("/remove-item")
 public class RemoveCartItemController extends HttpServlet {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3226246669829386443L;
 	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")

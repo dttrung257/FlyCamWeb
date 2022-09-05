@@ -9,10 +9,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="images/fevicon.png" type="image/gif" />
 	<title>Sign In</title>
+	
+	<link href="fontawesome-6.1.2/css/all.min.css" rel="stylesheet" />
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+	
 	<link href="css/sign-in-sign-up.css" rel="stylesheet"/>
-	<link href="fontawesome-6.1.2/css/all.min.css" rel="stylesheet" />
 	
 </head>
 
@@ -23,16 +25,17 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
           	<a href="home" style="text-decoration: none; color: #434f78;">
-               &leftarrow; <span>Back to home</span>
+               <i class="fa-solid fa-arrow-left"></i>
+               <span>Back to home</span>
              </a>
             <h5 class="card-title text-center mb-5 fw-bold fs-5">Sign In</h5>
             <form action="sign-in" method="post">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                <input type="email" required class="form-control" name="email" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                <input type="password" required class="form-control" name="password" placeholder="Password">
                 <label for="floatingPassword">Password</label>
               </div>
 

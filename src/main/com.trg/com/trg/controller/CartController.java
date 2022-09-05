@@ -22,7 +22,7 @@ public class CartController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 8216450607016431727L;
 	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")

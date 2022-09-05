@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Cart</title>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/cart-style.css">
+	<meta charset="UTF-8">
+	<title>Cart</title>
+	
+	<link href="fontawesome-6.1.2/css/all.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/cart-style.css">
 </head>
 <body>
 	<div class="card">
@@ -53,9 +54,10 @@
                     </c:forEach>
                     
                     <div class="back-to-shop">
-                    <a href="home">
-                    &leftarrow; <span class="text-muted">Back to shop</span>
-                    </a>
+                    	<a href="home">
+                    		<i class="fa-solid fa-arrow-left"></i>
+                    		<span class="text-muted">Back to shop</span>
+                    	</a>
                     </div>
                 </div>
                 <div class="col-md-4 summary">

@@ -21,7 +21,7 @@ public class SignUpController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1224864450251679694L;
 	private ItfAccountService accountService = AccountService.getInstance();
 
 	@Override
@@ -34,18 +34,12 @@ public class SignUpController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if (accountService.findAccount(req.getParameter("email")) == null && req.getParameter("password").length() >= 8
-				&& req.getParameter("password").length() <= 20 && req.getParameter("fullName").length() <= 50) {
-			String email = req.getParameter("email");
-			String password = req.getParameter("password");
-			String fullName = req.getParameter("fullName");
-			Account account = new Account(email, password, fullName, "", "", AccountStatus.ACTIVE, Role.ROLE_USER);
-			accountService.save(account);
-			resp.sendRedirect("sign-in");
-		} else if (req.getParameter("password").length() > 20 || req.getParameter("password").length() < 8) {
+		if (accountService.findAccount(req.getParameter("email")) != null) {
+			accountService.save(new Account(req.getParameter("fullName"), req.getParameter("email"), req.getParameter("password"), 
+					"", 0, "", "", "", AccountStatus.ACTIVE, Role.ROLE_USER));
 			resp.sendRedirect("sign-up");
 		} else {
-			resp.sendRedirect("home");
+			resp.sendRedirect("sign-in");
 		}
 	}
 }

@@ -18,13 +18,11 @@ public class HomeController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7437982671715005499L;
 	private ItfProductService productService = ProductService.getInstance();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//req.getSession().removeAttribute("account-info");
 		req.setAttribute("listProduct", productService.findAll("price", "DESC", 6));
 		RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
 		dispatcher.forward(req, resp);

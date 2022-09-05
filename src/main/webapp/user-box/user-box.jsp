@@ -2,13 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="user_option_box">
-	<a href="" class="account-link"> 
-		<i class="fa fa-user" aria-hidden="true"></i> 
-		<span> My Account </span>
-	</a> 
+	<c:if test="${sessionScope.accountInfo != null}"> 
+		<a href="profile" class="account-link"> 
+			<i class="fa fa-user" aria-hidden="true" style="color: #fff;"></i> 
+			<span style="text-transform: none; font-size: 15px;"> My Account </span>
+		</a>
+	</c:if> 
 	<a href="cart" class="cart-link"> 
-		<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-		<span> Cart </span>
+		<i class="fa fa-shopping-cart" aria-hidden="true" style="color: #fff;"></i> 
+		<span style="text-transform: none; font-size: 15px;"> Cart </span>
 	</a>
 	<c:if test="${sessionScope.accountInfo != null}"> 
 	 	<a style="padding-right: 5px; border-right: 1px solid #fff" href="#">

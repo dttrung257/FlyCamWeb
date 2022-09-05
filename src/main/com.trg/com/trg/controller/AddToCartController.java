@@ -17,10 +17,11 @@ import com.trg.service.imp.CartService;
 
 @WebServlet(urlPatterns = { "/add-to-cart" })
 public class AddToCartController extends HttpServlet {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1720211129268890099L;
 	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")

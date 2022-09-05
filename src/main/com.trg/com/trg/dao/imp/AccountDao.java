@@ -30,7 +30,7 @@ public class AccountDao extends Dao<Account> implements ItfAccountDao {
 		String sql = "select * from accounts order by " + sortBy + " " + orderType + " limit " + limit;
 		return query(sql, accountMapper);
 	}
-	
+
 	@Override
 	public Account findAccount(String email) {
 		String sql = "select * from accounts where email = ?;";
@@ -54,41 +54,27 @@ public class AccountDao extends Dao<Account> implements ItfAccountDao {
 
 	@Override
 	public Account save(Account account) {
-		String sql = "insert into accounts (email, password, fullName, accountStatus, role) values (?, ?, ?, ?, ?)";
-
-		String email = account.getEmail();
-		String password = account.getPassword();
-		String fullName = account.getFullName();
-		String accountStatus = account.getAccountStatus();
-		String role = account.getRole();
-
-		if (query(sql, email, password, fullName, accountStatus, role)) {
-			Account newAccount = new Account();
-			newAccount.setEmail(email);
-			newAccount.setPassword(password);
-			newAccount.setFullName(fullName);
-			newAccount.setAccountStatus(accountStatus);
-			newAccount.setRole(role);
-			return newAccount;
+		String sql = "insert into accounts "
+				+ "(email, password, fullName, gender, age, country, phoneNumber, address, accountStatus, role)"
+				+ " values "
+				+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		if (query(sql, account.getEmail(), account.getPassword(), account.getFullName(), account.getGender(),
+				account.getAge(), account.getCountry(), account.getPhoneNumber(), account.getAddress(),
+				account.getAccountStatus(), account.getRole())) {
+			return account;
 		}
 		return null;
 	}
 
 	@Override
 	public Account update(Account account) {
-		// TODO Auto-generated method stub
-		String sql = "update accounts set email = ?, password = ?, fullName = ?, phoneNumber = ?, address = ?, accountStatus = ?, role = ? where accountId = ?";
+		String sql = "update accounts "
+				+ "set email = ?, password = ?, fullName = ?, gender = ?, age = ?, country = ?, phoneNumber = ?, address = ?, accountStatus = ?, role = ? "
+				+ "where accountId = ?;";
 
-		String email = account.getEmail();
-		String password = account.getPassword();
-		String fullName = account.getFullName();
-		String phoneNumber = account.getPhoneNumber();
-		String address = account.getAddress();
-		String accountStatus = account.getAccountStatus();
-		String role = account.getRole();
-		Long accountId = account.getAccountId();
-
-		if (query(sql, email, password, fullName, phoneNumber, address, accountStatus, role, accountId)) {
+		if (query(sql, account.getEmail(), account.getPassword(), account.getFullName(), account.getGender(),
+				account.getAge(), account.getCountry(), account.getPhoneNumber(), account.getAddress(),
+				account.getAccountStatus(), account.getRole(), account.getAccountId())) {
 			return account;
 		}
 		return null;
@@ -98,7 +84,7 @@ public class AccountDao extends Dao<Account> implements ItfAccountDao {
 	public void delete(Long accountId) {
 		// TODO Auto-generated method stub
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(AccountDao.getInstance().findAccount("dttrung@gmail.com", "97531"));
 	}

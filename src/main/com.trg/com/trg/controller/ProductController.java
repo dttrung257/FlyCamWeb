@@ -18,7 +18,7 @@ public class ProductController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -4706992555214564318L;
 	private ItfProductService  productService = ProductService.getInstance();
 
 	@Override

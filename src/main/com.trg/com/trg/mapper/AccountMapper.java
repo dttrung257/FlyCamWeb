@@ -23,7 +23,11 @@ public class AccountMapper implements RowMapper<Account> {
 			account.setEmail(rs.getString("email"));
 			account.setPassword(rs.getString("password"));
 			account.setFullName(rs.getString("fullName"));
+			account.setGender(rs.getString("gender"));
+			account.setAge(rs.getInt("age"));
+			account.setCountry(rs.getString("country"));
 			account.setPhoneNumber(rs.getString("phoneNumber"));
+			account.setAddress(rs.getString("address"));
 			account.setAccountStatus(rs.getString("accountStatus"));
 			account.setRole(rs.getString("role"));
 		} catch (SQLException e) {

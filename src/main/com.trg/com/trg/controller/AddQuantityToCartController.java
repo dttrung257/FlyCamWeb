@@ -21,7 +21,7 @@ public class AddQuantityToCartController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5972408105167384245L;
 	private ItfCartService cartService = CartService.getInstance();
 
 	@SuppressWarnings("unchecked")

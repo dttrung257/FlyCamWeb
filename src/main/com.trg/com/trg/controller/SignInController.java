@@ -19,7 +19,7 @@ public class SignInController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6440918524610894617L;
 	private ItfAccountService accountService = AccountService.getInstance();
 	
 	@Override
@@ -31,14 +31,9 @@ public class SignInController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String email = req.getParameter("email");
-		String password = req.getParameter("password");
-
-		if (accountService.findAccount(email, password) != null) {
+		if (accountService.findAccount(req.getParameter("email"), req.getParameter("password")) != null) {
 			HttpSession session = req.getSession();
-			session.setAttribute("accountInfo", accountService.findAccount(email, password));
-			System.out.println(session.getAttribute("accountInfo"));
+			session.setAttribute("accountInfo", accountService.findAccount(req.getParameter("email"), req.getParameter("password")));
 			resp.sendRedirect("home");
 		} else {
 			resp.sendRedirect("sign-in");

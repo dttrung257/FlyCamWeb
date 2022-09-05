@@ -18,9 +18,7 @@ public class LogOutController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		req.getSession().removeAttribute("accountInfo");
-		//req.getRequestDispatcher("index.jsp").forward(req, resp);
 		resp.sendRedirect("home");
 	}
 }

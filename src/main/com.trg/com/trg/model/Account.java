@@ -1,10 +1,13 @@
 package com.trg.model;
 
 public class Account {
-	private Long accountId;
+	private long accountId;
 	private String email;
 	private String password;
 	private String fullName;
+	private String gender;
+	private int age;
+	private String country;
 	private String phoneNumber;
 	private String address;
 	private String accountStatus;
@@ -14,23 +17,26 @@ public class Account {
 		super();
 	}
 
-	public Account(String email, String password, String fullName, String phoneNumber, String address,
-			String accountStatus, String role) {
+	public Account(String email, String password, String fullName, String gender, int age, String country,
+			String phoneNumber, String address, String accountStatus, String role) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.fullName = fullName;
+		this.gender = gender;
+		this.age = age;
+		this.country = country;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.accountStatus = accountStatus;
 		this.role = role;
 	}
 
-	public Long getAccountId() {
+	public long getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(Long accountId) {
+	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
 
@@ -56,6 +62,30 @@ public class Account {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getPhoneNumber() {
@@ -93,8 +123,8 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [accountId=" + accountId + ", email=" + email + ", password=" + password + ", fullName="
-				+ fullName + ", phoneNumber=" + phoneNumber + ", address=" + address + ", accountStatus="
-				+ accountStatus + ", role=" + role + "]";
+				+ fullName + ", gender=" + gender + ", age=" + age + ", country=" + country + ", phoneNumber="
+				+ phoneNumber + ", address=" + address + ", accountStatus=" + accountStatus + ", role=" + role + "]";
 	}
-
+	
 }
