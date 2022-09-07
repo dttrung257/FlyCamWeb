@@ -31,6 +31,7 @@
 
 <!-- font awesome style -->
 <link href="css/font-awesome.min.css" rel="stylesheet" />
+<link href="fontawesome-6.1.2/css/all.min.css" rel="stylesheet" />
 
 <!-- Custom styles for this template -->
 <link href="css/style.css" rel="stylesheet" />
@@ -61,13 +62,13 @@
 								<i class="fa fa-search" aria-hidden="true"></i>
 							</button>
 						</form>
-						
+
 						<jsp:include page="user-box/user-box.jsp" />
-						
+
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="header_bottom">
 				<div class="container-fluid">
 					<nav class="navbar navbar-expand-lg custom_nav-container ">

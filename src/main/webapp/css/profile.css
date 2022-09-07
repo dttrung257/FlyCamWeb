@@ -1,32 +1,32 @@
 body {
-    background: #fff;
+	background: #fff;
 }
 
 .form-control:focus {
-    box-shadow: none;
-    border-color: rgb(153, 170, 225);
+	box-shadow: none;
+	border-color: rgb(153, 170, 225);
 }
 
 .profile-button {
-    background: rgb(67, 79, 120);
-    box-shadow: none;
-    border: none
+	background: rgb(67, 79, 120);
+	box-shadow: none;
+	border: none
 }
 
 .profile-button:hover {
-    background: rgba(67, 79, 120, 0.8);
+	background: rgba(67, 79, 120, 0.8);
 }
 
 .profile-button:focus {
-    background: rgb(67, 79, 120);
-    box-shadow: none
+	background: rgb(67, 79, 120);
+	box-shadow: none
 }
 
 .profile-button:active {
-    background: rgb(67, 79, 120);
-    box-shadow: none
+	background: rgb(67, 79, 120);
+	box-shadow: none
 }
 
 .labels {
-    font-size: 13px;
+	font-size: 13px;
 }

@@ -86,6 +86,6 @@ public class AccountDao extends Dao<Account> implements ItfAccountDao {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(AccountDao.getInstance().findAccount("dttrung@gmail.com", "97531"));
+		System.out.println(AccountDao.getInstance().findAccount("tien@gmail.com"));
 	}
 }

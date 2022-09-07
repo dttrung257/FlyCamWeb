@@ -27,5 +27,8 @@ public class HomeController extends HttpServlet {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
 		dispatcher.forward(req, resp);
 	}
-
+	
+	public static void main(String[] args) {
+		System.out.println("FlyCamWeb");
+	}
 }

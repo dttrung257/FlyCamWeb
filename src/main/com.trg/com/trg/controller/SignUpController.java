@@ -34,12 +34,15 @@ public class SignUpController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if (accountService.findAccount(req.getParameter("email")) != null) {
-			accountService.save(new Account(req.getParameter("fullName"), req.getParameter("email"), req.getParameter("password"), 
-					"", 0, "", "", "", AccountStatus.ACTIVE, Role.ROLE_USER));
-			resp.sendRedirect("sign-up");
+		if (accountService.findAccount(req.getParameter("email")) == null) {
+			if (accountService.save(new Account(req.getParameter("email"), req.getParameter("password"), req.getParameter("fullName"), 
+					"", 0, "", "", "", AccountStatus.ACTIVE, Role.ROLE_USER)) != null) {
+				resp.sendRedirect("sign-in");
+			} else {
+				resp.sendRedirect("sign-up");
+			}
 		} else {
-			resp.sendRedirect("sign-in");
+			resp.sendRedirect("sign-up");
 		}
 	}
 }

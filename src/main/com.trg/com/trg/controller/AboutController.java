@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = { "/about" })
 public class AboutController extends HttpServlet {
 
-	
-	
 	/**
 	 * 
 	 */
@@ -21,7 +19,6 @@ public class AboutController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = req.getRequestDispatcher("about.jsp");
 		dispatcher.forward(req, resp);
 	}
